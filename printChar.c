@@ -2,7 +2,7 @@
 
 /**
  * printChar - Handles specifier char
- * @chooseF: va_list
+ * @arg_list: va_list
  */
 
 int printChar(va_list arg_list, int count)
@@ -14,7 +14,7 @@ int printChar(va_list arg_list, int count)
 
 /**
  * printPercent - Handles specifier %
- * @chooseF: va_list
+ * @arg_list: va_list
  */
 
 int printPercent(va_list arg_list, int count)
@@ -32,10 +32,11 @@ int printPercent(va_list arg_list, int count)
 
 int printString(va_list arg_list, int count)
 {
+	/* Puts given string into variable my_string */
 	char* my_string = va_arg(arg_list, char*);
 
 	int x;
-
+	/* Iterates through string and prints every character */
 	for (x = 0; my_string[x] != '\0'; x++)
 	{
 		_putchar(my_string[x]);
