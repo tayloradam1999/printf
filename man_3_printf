@@ -1,0 +1,8 @@
+.\" Manpage for _printf
+.TH man 3 "14 March 2021" "1.0" "_printf man page"
+.SH NAME
+_printf \- prints anything
+.SH SYNOPSIS
+#include "holberton.h"
+
+int _printf(const char *format, ...);
