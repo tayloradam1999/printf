@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			if (format[string_index] == '%')
 			{
 				x = parser(format, arg_list, chooseF, struct_index, &string_index);
-				if (x == (-1))
+				if (x == -1)
 					return (-1);
 				count += x;
 			}
@@ -59,6 +59,9 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 	   int struct_index, int *string_index)
 {
 	int count = 0;
+
+	if (format[*string_index + 1] == '\0')
+		return (-1);
 	/* Iterating through our array of structs */
 	while (chooseF[struct_index].input != '\0')
 	{
@@ -72,11 +75,7 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 		}
 		struct_index++;
 	}
-	if (format[*string_index + 1] == '\0')
-	{
-		return (-1);
-	}
-	/* If no match found, prints character after % */
+	/* If no match found, prints % */
 	if (chooseF[struct_index].input == '\0')
 	{
 		_putchar(format[*string_index]);
