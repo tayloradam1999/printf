@@ -1,8 +1,10 @@
 #include "holberton.h"
 
 /**
- * printChar - Handles specifier char
- * @arg_list: va_list
+ * printChar - Handles specifier c
+ * @arg_list: whatever character matches %c
+ * @count: number of characters printed so far
+ * Return: number of characters printed so far + 1
  */
 
 int printChar(va_list arg_list, int count)
@@ -14,7 +16,9 @@ int printChar(va_list arg_list, int count)
 
 /**
  * printPercent - Handles specifier %
- * @arg_list: va_list
+ * @arg_list: it will be a %
+ * @count: number of characters printed so far
+ * Return: number of characters printed so far + 1
  */
 
 int printPercent(va_list arg_list, int count)
@@ -26,14 +30,16 @@ int printPercent(va_list arg_list, int count)
 }
 
 /**
- * printString - Handles specifier string
- * @arg_list: va_list
+ * printString - Handles specifier s
+ * @arg_list: whatever string matches %s
+ * @count: number of characters printed so far
+ * Return: number of characters printed with this function + count
  */
 
 int printString(va_list arg_list, int count)
 {
 	/* Puts given string into variable my_string */
-	char* my_string = va_arg(arg_list, char*);
+	char *my_string = va_arg(arg_list, char*);
 
 	int x;
 	/* Iterates through string and prints every character */

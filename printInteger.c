@@ -3,7 +3,7 @@
 /**
  * printIntHelper - Recursive function for printing integer
  * @num: Integer to print
- * Return: newCount
+ * Return: character printing counter inside recursive function
  */
 
 int printIntHelper(unsigned int num)
@@ -13,12 +13,13 @@ int printIntHelper(unsigned int num)
 
 	if (num == 0)
 		return (newCount);
+
 	else
 	{
 		/* Strips last digit of integer */
-		output = num % 10; 
+		output = num % 10;
 		/* Sends back the integer minus last digit for recursion */
-		newCount = printIntHelper(num / 10); 
+		newCount = printIntHelper(num / 10);
 		/* Putting digits in order */
 		_putchar(output + '0');
 		newCount++;
@@ -28,18 +29,19 @@ int printIntHelper(unsigned int num)
 
 /**
  * printInteger - Calls recursive function
- * @full_int: integer passed in
- * Return: count
+ * @arg_list: full integer passed in by _printf
+ * @count: number of characters printed so far
+ * Return: count of characters printed so far plus integers printed
  */
 
-int printInteger(va_list full_int, int count)
+int printInteger(va_list arg_list, int count)
 {
-	/* Puts value of full_int into my_int */
-	int my_int = (va_arg(full_int, int));
+	/* Puts value of arg_list into my_int */
+	int my_int = (va_arg(arg_list, int));
 
 	if (my_int < 0)
 	{
-		my_int = -my_int;
+		my_int = my_int * -1;
 		_putchar('-');
 		count++;
 	}
