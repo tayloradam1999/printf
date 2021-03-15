@@ -8,7 +8,7 @@
 
 int _printf(const char *format, ...)
 {
-	int struct_index, string_index = 0, count = 0;
+	int struct_index, string_index = 0, count = 0, x = 0;
 	print_all chooseF[] = {
 		{'c', printChar},
 		{'s', printString},
@@ -29,7 +29,10 @@ int _printf(const char *format, ...)
 			/* When the iterator encounters %, jump to parser function */
 			if (format[string_index] == '%')
 			{
-				count += parser(format, arg_list, chooseF, struct_index, &string_index);
+				x = parser(format, arg_list, chooseF, struct_index, &string_index);
+				if (x == (-1))
+					return (-1);
+				count += x;
 			}
 			/* If no % is found, prints string as is */
 			else
@@ -69,10 +72,14 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 		}
 		struct_index++;
 	}
-	/* If no match found, prints character after % */
-	if (chooseF[struct_index].input == '\0' && format[*string_index + 1] != '\0')
+	if (format[*string_index + 1] == '\0')
 	{
-		 _putchar(format[*string_index]);
+		return (-1);
+	}
+	/* If no match found, prints character after % */
+	if (chooseF[struct_index].input == '\0')
+	{
+		_putchar(format[*string_index]);
 		count++;
 	}
 	return (count);
