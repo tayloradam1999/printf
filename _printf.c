@@ -2,14 +2,14 @@
 
 /**
  * _printf - Prints anything
- * @format: List of types of arguments passed to function
- * @Return: Number of characters printed
+ * @format: Full string passed to function
+ * Return: Number of characters printed
  */
 
 int _printf(const char *format, ...)
 {
 	int struct_index, string_index = 0, count = 0;
-	copy_string chooseF[] = {
+	print_all chooseF[] = {
 		{'c', printChar},
 		{'s', printString},
 		{'%', printPercent},
@@ -42,18 +42,18 @@ int _printf(const char *format, ...)
 	return (count);
 }
 
-/*
- * parser - Moves through array of structs and inputed string
- * @format: Given string
- * @arg_list: Arguments passed
+/**
+ * parser - Chooses function pointer that matches specifier char after %
+ * @format: Given string - looking at c, d, non-specifier, etc
+ * @arg_list: Arguments passed - passing in whatever matches %d, etc
  * @chooseF: Name of our array of structs
  * @struct_index: Moves through the array of structs
  * @string_index: Moves through format
  * Return: Count
  */
 
-int parser(const char* format, va_list arg_list, copy_string chooseF[],
-int struct_index, int *string_index)
+int parser(const char *format, va_list arg_list, print_all chooseF[],
+	   int struct_index, int *string_index)
 {
 	int count = 0;
 	/* Iterating through our array of structs */
