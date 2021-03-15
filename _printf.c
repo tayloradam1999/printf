@@ -27,11 +27,13 @@ int _printf(const char *format, ...)
 	{
 		struct_index = 0;
 			/* When the iterator encounters %, jump to parser function */
+			/* assigning x to return value of the corresponding function */
 			if (format[string_index] == '%')
 			{
 				x = parser(format, arg_list, chooseF, struct_index, &string_index);
 				if (x == -1)
 					return (-1);
+				/* -1 if no char after % */
 				count += x;
 			}
 			/* If no % is found, prints string as is */
@@ -59,13 +61,13 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 	   int struct_index, int *string_index)
 {
 	int count = 0;
-
+	/* if there is no char after %, output -1 */
 	if (format[*string_index + 1] == '\0')
 		return (-1);
 	/* Iterating through our array of structs */
 	while (chooseF[struct_index].input != '\0')
 	{
-		/* Iterating finds corresponding conversion specifier */
+		/* Iterating until matching specifier is found */
 		if (format[*string_index + 1] == chooseF[struct_index].input)
 		{
 			/* Jumps to function that deals with specifier */
