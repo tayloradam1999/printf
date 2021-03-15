@@ -70,9 +70,9 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 		struct_index++;
 	}
 	/* If no match found, prints character after % */
-	if (chooseF[struct_index].input == '\0')
+	if (chooseF[struct_index].input == '\0' && format[*string_index + 1] != '\0')
 	{
-		_putchar(format[*string_index]);
+		 _putchar(format[*string_index]);
 		count++;
 	}
 	return (count);
