@@ -39,6 +39,13 @@ int printInteger(va_list arg_list, int count)
 	/* Puts value of arg_list into my_int */
 	int my_int = (va_arg(arg_list, int));
 
+	if (my_int == 0)
+	{
+		_putchar(0 + '0');
+		count++;
+		return (count);
+	}
+
 	if (my_int < 0)
 	{
 		my_int = my_int * -1;
