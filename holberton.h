@@ -31,6 +31,7 @@ int printBinary(va_list arg_list, int count);
 int printOctal(va_list arg_list, int count);
 int printLowerHex(va_list arg_list, int count);
 int printUpperHex(va_list arg_list, int count);
+int printRot13(va_list arg_list, int count);
 
 int _printf(const char *format, ...);
 int parser(const char *format, va_list arg_list, print_all chooseF[],
