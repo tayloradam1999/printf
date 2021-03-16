@@ -64,25 +64,41 @@ int printString(va_list arg_list, int count)
 
 int printRot13(va_list arg_list, int count)
 {
-	int x = 0, y = 0;
-	char *my_string = va_arg(arg_list, char*);
-	char before[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char after[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *c = va_arg(arg_list, char*);
+	int output, x;
 
-	if (my_string == NULL)
-		my_string = "(null)";
-
-	for (; my_string[x] != '\0'; x++)
+	if (c == NULL)
 	{
-	y = 0;
-		while (before[y] != '\0')
+		c = "(null)";
+		for (x = 0; c[x] != '\0'; x++)
+			count += _putchar(c[x]);
+	}
+	for (x = 0; c[x] != '\0'; x++)
+	{
+		if (c[x] >= 'A' && c[x] <= 'Z')
 		{
-			if (my_string[x] == before[y])
+		output = c[x] + 13;
+			if (output <= 'Z')
+				count += _putchar(output);
+			else
 			{
-				my_string[x] = after[y];
-				break;
+				output = c[x] - 13;
+				count += _putchar(output);
 			}
 		}
+		else if (c[x] >= 'a' && c[x] <= 'z')
+		{
+		output = c[x] + 13;
+			if (c[x] + 13 <= 'z')
+				count += _putchar(output);
+			else
+			{
+				output = c[x] - 13;
+				count += _putchar(output);
+			}
+		}
+		else
+			count += _putchar(c[x]);
 	}
 	return (count);
 }
