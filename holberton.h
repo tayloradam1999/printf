@@ -27,6 +27,8 @@ int printString(va_list arg_list, int count);
 int printPercent(va_list, int count);
 int printInteger(va_list arg_list, int count);
 int printIntHelper(unsigned int num);
+int printUnsignedInt(va_list arg_list, int count);
+char printLowerHex(va_list arg_list, int count);
 
 int _printf(const char *format, ...);
 int parser(const char *format, va_list arg_list, print_all chooseF[],
