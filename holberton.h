@@ -16,8 +16,10 @@
 
 typedef struct print_all
 {
-	char input; /* Corresponding character that comes after % */
-	int (*f)(va_list, int count); /* Function pointer to printing functions */
+	/* Character that comes after % for matching */
+	char input;
+	/* Function pointer to printing functions */
+	int (*f)(va_list, int count);
 } print_all;
 
 int _putchar(char c);
