@@ -50,8 +50,32 @@ int printString(va_list arg_list, int count)
 	/* Iterates through string and prints every character */
 	for (x = 0; my_string[x] != '\0'; x++)
 	{
-		_putchar(my_string[x]);
-		count++;
+		count += _putchar(my_string[x]);
+	}
+	return (count);
+}
+
+int printRot13(va_list arg_list, int count)
+{
+	int x = 0, y = 0;
+	char *my_string = va_arg(arg_list, char*);
+	char before[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char after[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	if (my_string == NULL)
+		my_string = "(null)";
+
+	for (; my_string[x] != '\0'; x++)
+	{
+	y = 0;
+		while (before[y] != '\0')
+		{
+			if (my_string[x] == before[y])
+			{
+				my_string[x] = after[y];
+				break;
+			}
+		}
 	}
 	return (count);
 }
