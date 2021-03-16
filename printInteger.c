@@ -11,6 +11,7 @@ int printIntHelper(unsigned int num)
 	int newCount = 0;
 	int output;
 
+	/* base condition to end recursion and start printing */
 	if (num == 0)
 		return (newCount);
 
@@ -20,7 +21,7 @@ int printIntHelper(unsigned int num)
 		output = num % 10;
 		/* Sends back the integer minus last digit for recursion */
 		newCount = printIntHelper(num / 10);
-		/* Putting digits in order */
+		/* Prints digits in order */
 		_putchar(output + '0');
 		newCount++;
 	}
@@ -28,7 +29,7 @@ int printIntHelper(unsigned int num)
 }
 
 /**
- * printInteger - Calls recursive function
+ * printInteger - Calls recursive function to print integers
  * @arg_list: full integer passed in by _printf
  * @count: number of characters printed so far
  * Return: count of characters printed so far plus integers printed
@@ -56,6 +57,13 @@ int printInteger(va_list arg_list, int count)
 	count += printIntHelper((unsigned int)my_int);
 	return (count);
 }
+
+/**
+ * printUnsignedInt - Calls recursive function to print unsigned integers
+ * @arg_list: full integer passed in by _printf
+ * @count: number of characters printed so far
+ * Return: count of characters printed so far plus integers printed
+ */
 
 int printUnsignedInt(va_list arg_list, int count)
 {
