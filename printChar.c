@@ -56,6 +56,40 @@ int printString(va_list arg_list, int count)
 }
 
 /**
+ * printReverse - Handles specifier s and prints strings
+ * @arg_list: whatever string matches %r
+ * @count: number of characters printed so far
+ * Return: number of characters printed with this function + count
+ */
+
+int printReverse(va_list arg_list, int count)
+{
+	int x;
+
+	/* Puts given string into variable my_string */
+	char *my_string = va_arg(arg_list, char*);
+
+	if (my_string == NULL)
+	{
+		my_string = "(null)";
+		for (x = 0; my_string[x] != '\0'; x++)
+		{
+			count += _putchar(my_string[x]);
+		}
+	}
+
+	while (my_string[x] != '\0')
+		x++;
+
+	/* Iterates through string and prints every character in reverse */
+	for (x = x - 1; x >= 0 ; x--)
+	{
+		count += _putchar(my_string[x]);
+	}
+	return (count);
+}
+
+/**
  * printRot13 - Handles specifier R and prints string in rot13
  * @arg_list: whatever string matches %R
  * @count: number of characters printed so far
