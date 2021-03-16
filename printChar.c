@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * printChar - Handles specifier c
+ * printChar - Handles specifier c and prints single character
  * @arg_list: whatever character matches %c
  * @count: number of characters printed so far
  * Return: number of characters printed so far + 1 for the new line
@@ -16,7 +16,7 @@ int printChar(va_list arg_list, int count)
 }
 
 /**
- * printPercent - Handles specifier %
+ * printPercent - Handles specifier % and prints %
  * @arg_list: it will be a %
  * @count: number of characters printed so far
  * Return: number of characters printed so far + 1 for the new line
@@ -31,7 +31,7 @@ int printPercent(va_list arg_list, int count)
 }
 
 /**
- * printString - Handles specifier s
+ * printString - Handles specifier s and prints strings
  * @arg_list: whatever string matches %s
  * @count: number of characters printed so far
  * Return: number of characters printed with this function + count
@@ -56,10 +56,10 @@ int printString(va_list arg_list, int count)
 }
 
 /**
- * printRot13 - Alters input string using rot13
- * @arg_list: Passed string
- * @count: Number of characters printed so far
- * Return: Number of characters printed with this function + count
+ * printRot13 - Handles specifier R and prints string in rot13
+ * @arg_list: whatever string matches %R
+ * @count: number of characters printed so far
+ * Return: number of characters printed with this function + count
  */
 
 int printRot13(va_list arg_list, int count)
@@ -75,6 +75,7 @@ int printRot13(va_list arg_list, int count)
 	}
 	for (x = 0; c[x] != '\0'; x++)
 	{
+		/* converts capital chars - A-M + 13 and N-Z - 13 */
 		if (c[x] >= 'A' && c[x] <= 'Z')
 		{
 		output = c[x] + 13;
@@ -86,6 +87,7 @@ int printRot13(va_list arg_list, int count)
 				count += _putchar(output);
 			}
 		}
+		/* converts lowercase chars - a-m + 13 and n-z - 13 */
 		else if (c[x] >= 'a' && c[x] <= 'z')
 		{
 		output = c[x] + 13;
@@ -97,6 +99,7 @@ int printRot13(va_list arg_list, int count)
 				count += _putchar(output);
 			}
 		}
+		/* if not character, prints value */
 		else
 			count += _putchar(c[x]);
 	}
