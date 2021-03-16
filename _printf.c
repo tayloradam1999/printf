@@ -12,7 +12,8 @@ int _printf(const char *format, ...)
 	print_all chooseF[] = {
 		{'c', printChar}, {'s', printString}, {'%', printPercent},
 		{'d', printInteger}, {'i', printInteger}, {'u', printUnsignedInt},
-		{'x', printLowerHex}, {'X', printUpperHex}, {'\0', NULL}
+		{'b', printBinary}, {'x', printLowerHex}, {'X', printUpperHex},
+		{'o', printOctal}, {'\0', NULL}
 	};
 	va_list arg_list;
 
