@@ -10,15 +10,12 @@ int _printf(const char *format, ...)
 {
 	int struct_index, string_index = 0, count = 0, x = 0;
 	print_all chooseF[] = {
-		{'c', printChar},
-		{'s', printString},
-		{'%', printPercent},
-		{'d', printInteger},
-		{'i', printInteger},
-		{'\0', NULL}
+		{'c', printChar}, {'s', printString}, {'%', printPercent},
+		{'d', printInteger}, {'i', printInteger}, {'u', printUnsignedInt},
+		{'x', printLowerHex}, {'X', printUpperHex}, {'\0', NULL}
 	};
 	va_list arg_list;
-	/* If statement to throw error */
+
 	if (format == NULL)
 		return (-1);
 	va_start(arg_list, format);
@@ -27,20 +24,17 @@ int _printf(const char *format, ...)
 	{
 		struct_index = 0;
 			/* When the iterator encounters %, jump to parser function */
-			/* assigning x to return value of the corresponding function */
+			/* x is the return value of the corresponding function */
 			if (format[string_index] == '%')
 			{
 				x = parser(format, arg_list, chooseF, struct_index, &string_index);
 				if (x == -1)
-					return (-1);
-				/* -1 if no char after % */
+					return (-1); /* -1 if no spec after % */
 				count += x;
 			}
 			/* If no % is found, prints string as is */
 			else
-			{
 				count += _putchar(format[string_index]);
-			}
 		string_index++;
 	}
 	va_end(arg_list);

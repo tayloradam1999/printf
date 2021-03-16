@@ -56,3 +56,18 @@ int printInteger(va_list arg_list, int count)
 	count += printIntHelper((unsigned int)my_int);
 	return (count);
 }
+
+int printUnsignedInt(va_list arg_list, int count)
+{
+	int my_int = (va_arg(arg_list, int));
+
+	if (my_int == 0)
+	{
+		_putchar(0 + '0');
+		count++;
+		return (count);
+	}
+
+	count += printIntHelper(my_int);
+	return (count);
+}
