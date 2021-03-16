@@ -64,44 +64,44 @@ int printString(va_list arg_list, int count)
 
 int printRot13(va_list arg_list, int count)
 {
-	char *c = va_arg(arg_list, char*);
+	char *str = va_arg(arg_list, char*);
 	int output, x;
 
-	if (c == NULL)
+	if (str == NULL)
 	{
-		c = "(null)";
-		for (x = 0; c[x] != '\0'; x++)
-			count += _putchar(c[x]);
+		str = "(null)";
+		for (x = 0; str[x] != '\0'; x++)
+			count += _putchar(str[x]);
 	}
-	for (x = 0; c[x] != '\0'; x++)
+	for (x = 0; str[x] != '\0'; x++)
 	{
 		/* converts capital chars - A-M + 13 and N-Z - 13 */
-		if (c[x] >= 'A' && c[x] <= 'Z')
+		if (str[x] >= 'A' && str[x] <= 'Z')
 		{
-		output = c[x] + 13;
+		output = str[x] + 13;
 			if (output <= 'Z')
 				count += _putchar(output);
 			else
 			{
-				output = c[x] - 13;
+				output = str[x] - 13;
 				count += _putchar(output);
 			}
 		}
 		/* converts lowercase chars - a-m + 13 and n-z - 13 */
-		else if (c[x] >= 'a' && c[x] <= 'z')
+		else if (str[x] >= 'a' && str[x] <= 'z')
 		{
-		output = c[x] + 13;
-			if (c[x] + 13 <= 'z')
+		output = str[x] + 13;
+			if (str[x] + 13 <= 'z')
 				count += _putchar(output);
 			else
 			{
-				output = c[x] - 13;
+				output = str[x] - 13;
 				count += _putchar(output);
 			}
 		}
-		/* if not character, prints value */
+		/* if not alphabet, prints value */
 		else
-			count += _putchar(c[x]);
+			count += _putchar(str[x]);
 	}
 	return (count);
 }
