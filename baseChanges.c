@@ -1,77 +1,175 @@
 #include "holberton.h"
 
 /**
- * printLowerHex - Converts an int to lowercase hexidecimal
+ * printBinary - Converts unsigned int to binary
  * @arg_list: Given input
- * @count: How many characters are being outputted
- * Return: count
+ * @count: characters printed until now
+ * Return: total characters printed after this
  */
 
-int printLowerHex(va_list arg_list, int count)
+int printBinary(va_list arg_list, int count)
 {
 	unsigned int decNum;
-	int rem, i = 0;
-	char hexNum[30];
+	int digit = 0;
+	int binaryNum[30];
 
 	decNum = (unsigned int)(va_arg(arg_list, int));
 
-	while (decNum != 0)
+	if (decNum == 0)
 	{
-		rem = decNum % 16;
-		if (rem < 10)
-		{
-			rem = rem + 80; /* 'a' is 97 */
-		}
-		else
-		{
-			rem = rem + 87; /* 'f' is 102 */
-		}
-		hexNum[i] = rem;
-		i++;
-		decNum = decNum / 16;
+		_putchar('0');
+		count++;
+		return (count);
 	}
 
-	for (i = i - 1; i >= 0; i--)
+	/* finds binaryNum and stores in reverse order */
+	while (decNum != 0)
 	{
-		_putchar(hexNum[i]);
+		binaryNum[digit] = decNum % 2;
+		decNum = decNum / 2;
+		digit++;
+	}
+	/* prints reversed digits in reverse */
+	for (digit = digit - 1; digit >= 0; digit--)
+	{
+		_putchar(binaryNum[digit] + '0');
 		count++;
 	}
 	return (count);
 }
 
 /**
- * printUpperHex - Converts an int to uppercase hexidecimal
+ * printOctal - Converts unsigned int to octal number
  * @arg_list: Given input
  * @count: characters printed until now
- * Return: total characters printed so far
+ * Return: total characters printed after this
+*/
+
+int printOctal(va_list arg_list, int count)
+{
+	unsigned int decNum;
+	int digit = 0;
+	int octalNum[30];
+
+	decNum = (unsigned int)(va_arg(arg_list, int));
+
+	if (decNum == 0)
+	{
+		_putchar('0');
+		count++;
+		return (count);
+	}
+
+	/* finds octalNum and stores in reverse order */
+	while (decNum != 0)
+	{
+		octalNum[digit] = decNum % 8;
+		decNum = decNum / 8;
+		digit++;
+	}
+	/* prints reversed digits in reverse */
+	for (digit = digit - 1; digit >= 0; digit--)
+	{
+		_putchar(octalNum[digit] + '0');
+		count++;
+	}
+	return (count);
+}
+
+
+/**
+ * printLowerHex - Converts unsigned int to lowercase hexidecimal
+ * @arg_list: Given input
+ * @count: characters printed until now
+ * Return: total characters printed after this
+ */
+
+int printLowerHex(va_list arg_list, int count)
+{
+	unsigned int decNum;
+	int remainder, digit = 0;
+	char hexNum[30];
+
+	decNum = (unsigned int)(va_arg(arg_list, int));
+	/* find hexNum and stores in reverse order */
+
+	if (decNum == 0)
+	{
+		_putchar('0');
+		count++;
+		return (count);
+	}
+
+	while (decNum != 0)
+	{
+		remainder = decNum % 16;
+		/* '0' is 48 so under 10 add to get 0-9 */
+		if (remainder < 10)
+		{
+			remainder = remainder + 48;
+		}
+		/* 'a' is 97 so over 10 add to get a-f */
+		else
+		{
+			remainder = remainder + 87;
+		}
+		hexNum[digit] = remainder;
+		digit++;
+		decNum = decNum / 16;
+	}
+	/* prints reversed digits in reverse */
+	for (digit = digit - 1; digit >= 0; digit--)
+	{
+		_putchar(hexNum[digit]);
+		count++;
+	}
+	return (count);
+}
+
+/**
+ * printUpperHex - Converts unsigned int to uppercase hexidecimal
+ * @arg_list: Given input
+ * @count: characters printed until now
+ * Return: total characters printed after this
  */
 
 int printUpperHex(va_list arg_list, int count)
 {
 	unsigned int decNum;
-	int remainder, i = 0;
+	int remainder, digit = 0;
 	char hexNum[30];
 
 	decNum = (unsigned int)(va_arg(arg_list, int));
 
+	if (decNum == 0)
+	{
+		_putchar('0');
+		count++;
+		return (count);
+	}
+
+	/* finds hexNum and stores in reverse order */
 	while (decNum != 0)
 	{
 		remainder = decNum % 16;
+		/* '0' is 48 so under 10, add 48 to get 0-9 */
 		if (remainder < 10)
 		{
-			remainder += 48; /* 'A' is 65 */
+			remainder += 48;
 		}
+		/* 'A' is 65 so over 10 add 55 to get A-F */
 		else
 		{
-			remainder += 55; /* 'F' is 70 */
+			remainder += 55;
 		}
-		hexNum[i] = remainder;
-		i++;
+		hexNum[digit] = remainder;
+		digit++;
 		decNum = decNum / 16;
 	}
-	for (i = i - 1; i >= 0; i--)
+	/* prints reversed digits in reverse */
+	for (digit = digit - 1; digit >= 0; digit--)
 	{
-		_putchar(hexNum[i]);
+		_putchar(hexNum[digit]);
 		count++;
 	}
 	return (count);

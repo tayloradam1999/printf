@@ -27,6 +27,8 @@ int printPercent(va_list, int count);
 int printInteger(va_list arg_list, int count);
 int printIntHelper(unsigned int num);
 int printUnsignedInt(va_list arg_list, int count);
+int printBinary(va_list arg_list, int count);
+int printOctal(va_list arg_list, int count);
 int printLowerHex(va_list arg_list, int count);
 int printUpperHex(va_list arg_list, int count);
 
