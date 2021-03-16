@@ -66,7 +66,7 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 		if (format[*string_index + 1] == chooseF[struct_index].input)
 		{
 			/* Jumps to function that deals with specifier */
-			count = chooseF[struct_index].f(arg_list, count);
+			count = chooseF[struct_index].func_pointer(arg_list, count);
 			(*string_index)++;
 			break;
 		}
@@ -79,4 +79,15 @@ int parser(const char *format, va_list arg_list, print_all chooseF[],
 		count++;
 	}
 	return (count);
+}
+
+/**
+ * _putchar - Writes single character to stdout
+ * @c: The character to print
+ * Return: Number of characters printed (meaning 1 on success)
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
