@@ -4,7 +4,7 @@
  * printChar - Handles specifier c
  * @arg_list: whatever character matches %c
  * @count: number of characters printed so far
- * Return: number of characters printed so far + 1
+ * Return: number of characters printed so far + 1 for the new line
  */
 
 int printChar(va_list arg_list, int count)
@@ -19,7 +19,7 @@ int printChar(va_list arg_list, int count)
  * printPercent - Handles specifier %
  * @arg_list: it will be a %
  * @count: number of characters printed so far
- * Return: number of characters printed so far + 1
+ * Return: number of characters printed so far + 1 for the new line
  */
 
 int printPercent(va_list arg_list, int count)
@@ -54,6 +54,13 @@ int printString(va_list arg_list, int count)
 	}
 	return (count);
 }
+
+/**
+ * printRot13 - Alters input string using rot13
+ * @arg_list: Passed string
+ * @count: Number of characters printed so far
+ * Return: Number of characters printed with this function + count
+ */
 
 int printRot13(va_list arg_list, int count)
 {
