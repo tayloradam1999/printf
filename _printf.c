@@ -13,8 +13,7 @@ int _printf(const char *format, ...)
 		{'c', printChar}, {'s', printString}, {'%', printPercent},
 		{'d', printInteger}, {'i', printInteger}, {'u', printUnsignedInt},
 		{'b', printBinary}, {'x', printLowerHex}, {'X', printUpperHex},
-		{'o', printOctal}, {'R', printRot13}, {'r', printReverse},
-		{'\0', NULL}
+		{'o', printOctal}, {'R', printRot13}, {'\0', NULL}
 	};
 	va_list arg_list;
 
