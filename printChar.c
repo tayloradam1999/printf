@@ -82,10 +82,10 @@ int printReverse(va_list arg_list, int count)
 		x++;
 
 	/* Iterates through string and prints every character in reverse */
-	for (x = x - 1; x >= 0 ; x--)
+	for (x = x - 2; x >= 0 ; x--)
 	{
 		count += _putchar(my_string[x]);
-	}
+		}
 	return (count);
 }
 
