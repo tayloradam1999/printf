@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <string.h>
-#include <limits.h>
 
 /**
  * struct print_all - struct that pairs specifier with function pointer
@@ -29,7 +27,6 @@ int _putchar(char c);
 
 int printChar(va_list, int count);
 int printString(va_list arg_list, int count);
-int printReverse(va_list arg_list, int count);
 int printPercent(va_list, int count);
 int printRot13(va_list arg_list, int count);
 
