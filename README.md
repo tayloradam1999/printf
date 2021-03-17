@@ -1,14 +1,21 @@
-This repository is the home of Rachel and I's hand made printf program.
+# Printf
 
-Our program will have the same functionality of <stdio.h>'s printf.
+## This repository is home of Rachel Lewis and I's handmade printf program.
 
-You are able to print whatever you want with it, but as of now we only have the following specifiers
-accounted for:
+### Our program has the same functionality of <stdio.h>'s printf.
 
-	%c for chars,	 	 %s for strings,	 %% for printing a %,
-	%d for integers,	 %i for integers also,	 %u for unsigned ints,
-	%b for binary,		 %R for rot13,		 %o for unsigned octal,
-	%x for lowercase hexidecimal,		         %X for uppercase hexidecimal,
-	%r for reversing a string
+### You are able to print whatever you want, but as of now our program is only capable of handling the following conversion specifiers:
 
-Our return will always be count, with count being how many characters are passed.
+* %c for characters
+* %s for strings
+* %d and %i for integers
+* %u for unsigned ints
+* %% for printing a percent sign
+* %b for binary
+* %R for rot13
+* %o for unsigned octal
+* %x for lowercase hexadecimal
+* %X for uppercase hexadecimal
+* %r for reversing a string
+
+### The return of our program is count, with count being how many characters are passed.
