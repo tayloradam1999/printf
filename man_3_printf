@@ -4,14 +4,16 @@
 .SH NAME
 _printf \- formatted output conversion
 .SH SYNOPSIS
+.P
 #include "holberton.h"
+.P
 int _printf(const char *format, ...);
 .SH DESCRIPTION
 The _printf() produces output according to a format as described below.The _printf() function writes output to stdout, the standard output stream under the control of a format string that specifies how the following arguments are converted for output.
 .B
 Format of the format string.
 .P
-The format string is a character string that is composed of zero or more directives: ordinary characters and conversion specifications.
+The format string is a character string that is composed of zero or more directives that consist of ordinary characters and conversion specifications.
 .P
 Ordinary characters (not after a %) are copied unchanged to the output stream.
 .P
@@ -19,37 +21,37 @@ Conversion specifications consist of a % and a conversion specifier. Each conver
 .SH
 CONVERSION SPECIFIERS
 .P
-A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
+A conversion specifier is character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
 .TP
 .BR \%d ", " \%i
-The int argument is converted to signed decimal.
-.TP
-.BR \%o
-When given a decimal number as input, this conversion specifier will convert the decimal number into an equivalent octal number, i.e. convert the number with base value 10 to base value 8. The base value of a number system determines the number of digits used to represent a numeric value. For example, the binary number system uses two digits 0 and 1, the octal number system uses 8 digits from 0-7 and the decimal number system uses 10 digits 0-9 to represent any numeric value.
+The int argument is converted to signed decimal notation.
 .TP
 .BR \%u
-The u conversion specifier is implemented for fetching values from the address of a variable having a unsigned decimal integer stored in memory.
+The unsigned int is converted to unsigned decimal notation.
+.TP
+.BR \%o
+The unsigned int argument is converted into an equivalent octal number, meaning a number with base value 10 is converted to base value 8. The base value of a number system determines the number of digits used to represent a numeric value. The octal number system uses 8 digits from 0-7.
+.TP
+.BR \%b
+The unsigned int argument is converted into an equivalent binary number, meaning a number with base value 10 is converted to base value 2. The base value of a number system determines the number of digits used to represent a numeric value. Binary uses two digits 0 and 1.
 .TP
 .BR \%x
-The x conversion specifier converts unsigned integer arguments to unsigned hexadecimal notation. The letters abcdef are used for this conversion. In the C programming language, a hexadecimal number is a value having made up of 16 symbols which have 10 standard numerical systems from 0 to 9 with 6 extra symbols from a to f.
+The unsigned int argument is converted to hexadecimal notation, meaning a number with base value 10 is converted to base value 16. The lowercase letters abcdef are used for this conversion. In the C programming language, a hexadecimal number is a value made up of 16 symbols, 10 from the standard numerical system from 0 to 9 in addition to a to f.
 .TP
 .BR \%X
-The X conversion specifier converts unsigned integer arguments to unsigned hexadecimal notation. The letters ABCDEF are used for this conversion. The same rules from the x conversion specifier apply here, but with numerical systems from 0 to 9 with 6 extra symbols from A to F.
+The unsigned int argument is converted to hexadecimal notation, meaning a number with base value 10 is converted to base value 16. The uppercase characters ABCDF are used for this conversion. In the C programming language, a hexadecimal number is a value made up of 16 symbols, 10 from the standard numerical system from 0 to 9 in addition to A to F.
 .TP
 .BR \%c
-If no 1 modifier is present, the int argument is converted to an unsigned char, and the resulting character is written. 
+The int argument is converted to an unsigned char, and the resulting character is written.
 .TP
 .BR \%s
-If no 1 modifier is present: the const char * argument is expected to be a pointer to an array of character type (pointer to a string). Characters from the array are written up to (but not including) a terminating null byte ('\0').
+The const char * argument is expected to be a pointer to an array of character type (pointer to a string). Characters from the array are written up to (but not including) a terminating null byte ('\0').
 .TP
 .BR \%R
-The R conversion specifier will cipher the inputed string using rot13. Rot13, short for rotate by 13 places, is a simple letter substitution ciper that replaces a letter with the 13th letter after it in the alphabet.
+The const char * argument is encoded using ROT13. ROT13 rotates each character by 13 places in a simple letter substitution ciper that replaces a letter with the 13th letter before or after it in the alphabet.
 .TP
 .BR \%%
 The % conversion specifier is used when the user wants to print a percent sign to the terminal.
-.TP
-.BR \%b
-The b conversion specifier is used to translate the inputed data to binary.
 .SH
 RETURN VALUE
 .P
@@ -63,7 +65,7 @@ Upon successful return, these functions return the number of characters printed 
 .P
 	_printf("%d", len);
 .P
-where our conversion specifier d is taking the data from len, which we assigned to our _printf statement above it.
+where the conversion specifier d, assigned to len, is printing the return data from the _printf statement above it.
 .P
 If an output error is encountered, a negative value is returned.
 .SH
@@ -95,9 +97,7 @@ In order to convert to binary, you would do something like this:
 .P
 	printf("%b", non_binary);
 .P
-Where the variable non_binary is data that will be converted.
-.P
-Keep in mind that any character of the alphabet, all numbers, and all symbols can and will be converted to binary using the b conversion specifier.
+The variable non_binary is data that will be converted. Keep in mind that any character of the alphabet, all numbers, and all symbols can and will be converted to binary using the b conversion specifier.
 .SH
 COLOPHON
 .P
